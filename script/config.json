@@ -1,0 +1,173 @@
+{
+	"weights" : [0.5, 0.2, 0.3],
+	"randomFrac" : 0.8,
+	"neighbourhoodSize" : 8,
+	"maxRand" : 0.0,
+	
+	"startYear" : 1998,
+	"endYear" : 2010,
+	
+	"landUsePaths" : {
+		"1998" : "../data/LU_150m/lu98_2_150mr.img",
+		"1999" : "../data/LU_150m/lu99_2_150mr",
+		"2003" : "../data/LU_150m/lu03_2_150mr",
+		"2006" : "../data/LU_150m/lu06_2_150mr",
+		"2009" : "../data/LU_150m/lu09_2_150mr"
+	},
+
+	"landUses" : {
+		"0" : {
+			"name" : "outside region",
+			"type" : "none",
+			"color" : [1,1,1],
+			"imagePaths" : [],
+			"arrayWeights" : [],
+			"arrSuit" : null,
+			"arrZoning" : null
+		},
+		"1" : {
+			"name" : "Jordbruksmark",
+			"type" : "vacant",
+			"color" : [1,1,0.3],
+			"imagePaths" : [],
+			"arrayWeights" : [],
+			"suitMap" : null
+		},
+		"2" : {
+			"name" : "Skog",
+			"type" : "vacant",
+			"color" : [0.5,0.5,0],
+			"imagePaths" : [],
+			"arrayWeights" : [],
+			"suitMap" : null
+		},
+		"3" : {
+			"name" : "Stad (Boende & Kommersiell)",
+			"type" : "dynamic",
+			"color" : [1,0,0],
+			"imagePaths" : [],
+			"arrayWeights" : [],
+			"suitMap" : "data/suitability/suit_urbanRes.img"
+		},
+		"4" : {
+			"name" : "Stad (Industri)",
+			"type" : "dynamic",
+			"color" : [0.5,0.5,0.5],
+			"imagePaths" : [],
+			"arrayWeights" : [],
+			"suitMap" : "data/suitability/suit_urbanInd.img"
+		},
+		"5" : {
+			"name" : "Vägar",
+			"type" : "static",
+			"color" : [0.1,0.1,0.1],
+			"imagePaths" : [],
+			"arrayWeights" : [],
+			"suitMap" : null
+		},
+		"6" : {
+			"name" : "Park",
+			"type" : "static",
+			"color" : [0,1,0.2],
+			"imagePaths" : [],
+			"arrayWeights" : [],
+			"suitMap" : null
+		},
+		"7" : {
+			"name" : "Vatten",
+			"type" : "static",
+			"color" : [0,0.7,1],
+			"imagePaths" : [],
+			"arrayWeights" : [],
+			"suitMap" : null
+		},
+		"8" : {
+			"name" : "Gruva",
+			"type" : "static",
+			"color" : [0,0.5,0.2],
+			"imagePaths" : [],
+			"arrayWeights" : [],
+			"suitMap" : null
+		}
+	},
+	
+	"arrPaths" : {
+		"accessibility" : "../data/accessibility/roadsTest150m.img"
+	},
+	
+	"weights" : {
+		"suitability" : 0.3,
+		"accessibility" : 0.3,
+		"CA" : 0.4
+	},
+	
+	"macroDemand" : {
+		"1998": {"3": 1177, "4": 788},
+		"1999": {"3": 1180, "4": 800},
+		"2000": {"3": 1204, "4": 798},
+		"2001": {"3": 1228, "4": 796},
+		"2002": {"3": 1252, "4": 794},
+		"2003": {"3": 1275, "4": 792},
+		"2004": {"3": 1297, "4": 794},
+		"2005": {"3": 1319, "4": 797},
+		"2006": {"3": 1340, "4": 801},
+		"2007": {"3": 1362, "4": 796},
+		"2008": {"3": 1384, "4": 791},
+		"2009": {"3": 1407, "4": 786},
+		"2010": {"3": 1428, "4": 781},
+
+		"2011": {"3": 1452, "4": 776},
+		"2012": {"3": 1475, "4": 771},
+		"2013": {"3": 1497, "4": 766},
+		"2014": {"3": 1519, "4": 761},
+		"2015": {"3": 1542, "4": 756},
+		"2016": {"3": 1564, "4": 751},
+		"2017": {"3": 1587, "4": 746},
+		"2018": {"3": 1609, "4": 741},
+		"2019": {"3": 1632, "4": 736},
+		"2020": {"3": 1654, "4": 731},
+		"2021": {"3": 1676, "4": 726},
+		"2022": {"3": 1699, "4": 721},
+		"2023": {"3": 1721, "4": 716},
+		"2024": {"3": 1744, "4": 711},
+		"2025": {"3": 1766, "4": 706},
+		"2026": {"3": 1789, "4": 701},
+		"2027": {"3": 1811, "4": 696},
+		"2028": {"3": 1833, "4": 691},
+		"2029": {"3": 1856, "4": 686},
+		"2030": {"3": 1878, "4": 681}
+	},
+
+	"microInfluence" : {
+		"3" : {
+			"3" : {
+				"inertia" : 1000000.0,
+				"startY" : 20.0,
+				"middleXY" : [200, 5.0],
+				"endX" : 700,
+				"calibrate" : true
+			},
+			"6" : {
+				"startY" : 20.0,
+				"middleXY" : [200, 5.0],
+				"endX" : 700,
+				"calibrate" : false
+			},
+			"7" : {
+				"startY" : 10.0,
+				"middleXY" : [300, 5.0],
+				"endX" : 600,
+				"calibrate" : true
+			}
+		},
+		"4" : {
+			"4" : {
+				"inertia" : 300.0,
+				"startY" : 100.0,
+				"middleXY" : [300, 50.0],
+				"endX" : 400,
+				"calibrate" : true
+			}
+		}
+	}
+}

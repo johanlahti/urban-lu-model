@@ -1,0 +1,2 @@
+License: MIT License
+Author and copyright: Johan Lahti
