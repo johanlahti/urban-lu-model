@@ -17,7 +17,7 @@ The suitability matrix is calculated based on the distance to surrounding land u
 
 ## Are human systems predictable?
 
-Due to the unpredictability of human systems, a stochastic effect is added at each time-step. This means, the model will give a different output each time it runs. So how can this be called a prediction then??? Well, if you run the model a hundred times (using something called a Monte Carlo algorithm) you can then calculate the average of the outputs. This will show the estimated probability of a particular land use at a particular location.
+Due to the unpredictability of human systems, a stochastic effect is added at each time-step. This means, the model will give a different output each time it runs. So how can this be called a prediction then??? Well, if you run the model a hundred times ("Monte Carlo"-simulation) you can then calculate the average of the outputs. This will show the estimated probability of a particular land use at a particular location.
 
 Also, the stochasticity can in fact lead to clusters of similar outputs – where e.g. 40% of the "predictions" are similar whereas the rest take a different path (a completely different output). This is analogous to the "Butterfly effect", where one small change in the past can have big consequences in the future.
 
