@@ -1,6 +1,6 @@
-# -*- coding: cp1252 -*-
+# -*- coding: utf-8 -*-
 
-from osgeo import gdal
+# from osgeo import gdal
 
 import CUtils
 

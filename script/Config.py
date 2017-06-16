@@ -1,14 +1,15 @@
-# -*- coding: cp1252 -*-
+# -*- coding: utf-8 -*-
 import Utils, CUtils, LandUse, Constants
 import copy
 import json
+import os
 
 def readConfigFile():
     path = "config.json"
     configTxt = open(path, "r").read()
     return configTxt
 
-def convertJsonToDict(jsonTxt):
+def parseJSON(jsonTxt):
     dec = json.JSONDecoder()
     dict = dec.decode(jsonTxt)
     return dict
@@ -27,8 +28,9 @@ def makeLandUseInstances(arrLU, landUses):
 
 def makeColorTable(arrsLU):
     colorTable = []
-    for i in range(len(arrsLU)):
-        tuple = arrsLU[i].color
+    for i in arrsLU.keys():
+        luInst = arrsLU[i]
+        tuple = luInst.color
         colorTable.append(tuple)
     return colorTable
 
@@ -92,7 +94,7 @@ def calcInfluenceGraphs(defInfl, luKeysList, luNrsDynList):
     for tLu in defInfl.keys():
         # Iterate through influencing lu:s
         for iLu in defInfl[tLu].keys():
-            if iLu==-1:
+            if iLu == -1:
                 emptyDict[tLu][-1] = defInfl[tLu][-1]
                 continue
 
@@ -132,7 +134,13 @@ def makeArrsLU(luPaths):
     luDict = {}
     for year in luPaths.keys():
         path = luPaths[year]
-        luDict[year] = CUtils.makeArray(str(path))
+        luArr = CUtils.makeArray(str(path))
+
+        # Hack! Replace all 255 with 0 in the image
+        # print "\n\n\n---%s %s\n\n\n" % (luArr.shape[0], luArr.shape[1])
+        luArr = Utils.findAndReplace(luArr, find=[255], replaceWith=0, within=[ (0, 0), (luArr.shape[0], luArr.shape[1]) ])
+        
+        luDict[year] = luArr
     return luDict
 
 
@@ -154,7 +162,7 @@ def convertStringKeysToInt(dict):
 def setParams(self, configTxt=None):
     if configTxt==None:
         configTxt = readConfigFile()
-    config = convertJsonToDict(configTxt)
+    config = parseJSON(configTxt)
     convertStringKeysToInt(config)
 
     self.config = config
@@ -171,12 +179,16 @@ def setParams(self, configTxt=None):
     self.luDict = makeArrsLU(luPaths) # {1998 : arrLU98, 1999 : arrLU99 ...}
 
     self.arrStartLU = CUtils.makeArray( luPaths[min(luPaths.keys())].encode()) # make starting LU arr to the one with lowest year
+
+    # Hack! Replace 255 with 0
+    self.arrStartLU = Utils.findAndReplace(self.arrStartLU, find=[255], replaceWith=0, within=[ (0, 0), (self.arrStartLU.shape[0], self.arrStartLU.shape[1]) ])
+
     self.arrCurLU = self.arrStartLU.copy()
 
 
     self.arrAccess = CUtils.makeArray("../data/accessibility/roadsTest150m.img")
     #self.arrAccess = CUtils.makeArray(config["arrPaths"]["accessibility"].encode())
-    print "self.arrAccess shape...", self.arrAccess.shape
+    # print "self.arrAccess shape...", self.arrAccess.shape
 
     # Get shape of image - all images must have the same shape
     self.shape = self.arrStartLU.shape
@@ -196,7 +208,9 @@ def setParams(self, configTxt=None):
 
     self.maxRand = self.config["maxRand"]
 
+    # print config["landUses"]
     self.LU = makeLandUseInstances(self.arrStartLU, config["landUses"])
+    print self.LU
 
     self.colorTable = makeColorTable(self.LU)
 
@@ -213,6 +227,7 @@ def setMicroInfluence(model, defInfl, luKeys):
 
 
 if __name__=='__main__':
-    arrAccess = CUtils.makeArray("../data/accessibility/roadsTest150m.img")
+    root = os.path.abspath("../")
+    arrAccess = CUtils.makeArray( os.path.join(root, "data/accessibility/roadsTest150m.img") )
     #self.arrAccess = CUtils.makeArray(config["arrPaths"]["accessibility"].encode())
-    print "self.arrAccess shape...", arrAccess.shape
+    # print "self.arrAccess shape...", arrAccess.shape

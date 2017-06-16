@@ -1,0 +1,9 @@
+Starting calibration using these settings:
+acceptedNoneImprovements	20
+yStepMin	1
+yStepMax	20
+xStepMin	1
+xStepMax	8
+yStepIncrease	5
+xStepIncrease	2
+Starting error	5381.01405603

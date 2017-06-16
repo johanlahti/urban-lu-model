@@ -1,5 +1,4 @@
 {
-	"weights" : [0.5, 0.2, 0.3],
 	"randomFrac" : 0.8,
 	"neighbourhoodSize" : 8,
 	"maxRand" : 0.0,
@@ -8,11 +7,11 @@
 	"endYear" : 2010,
 	
 	"landUsePaths" : {
-		"1998" : "../data/LU_150m/lu98_2_150mr.img",
-		"1999" : "../data/LU_150m/lu99_2_150mr",
-		"2003" : "../data/LU_150m/lu03_2_150mr",
-		"2006" : "../data/LU_150m/lu06_2_150mr",
-		"2009" : "../data/LU_150m/lu09_2_150mr"
+		"1998" : "../data/LU_150m_geotiff/malmo_1998.tif",
+		"1999" : "../data/LU_150m_geotiff/malmo_1999.tif",
+		"2003" : "../data/LU_150m_geotiff/malmo_2003.tif",
+		"2006" : "../data/LU_150m_geotiff/malmo_2006.tif",
+		"2009" : "../data/LU_150m_geotiff/malmo_2009.tif"
 	},
 
 	"landUses" : {
@@ -47,7 +46,7 @@
 			"color" : [1,0,0],
 			"imagePaths" : [],
 			"arrayWeights" : [],
-			"suitMap" : "data/suitability/suit_urbanRes.img"
+			"suitMap" : null
 		},
 		"4" : {
 			"name" : "Stad (Industri)",
@@ -55,7 +54,7 @@
 			"color" : [0.5,0.5,0.5],
 			"imagePaths" : [],
 			"arrayWeights" : [],
-			"suitMap" : "data/suitability/suit_urbanInd.img"
+			"suitMap" : null
 		},
 		"5" : {
 			"name" : "Vägar",

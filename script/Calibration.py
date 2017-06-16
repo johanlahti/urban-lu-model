@@ -2,12 +2,11 @@ from operator import itemgetter
 import copy
 import random
 import os, sys
+sys.path.append( "../pyxFiles" )
 
 # import model scripts
 import Constants, Config, Model, Utils
 from PIL import Image
-
-import winsound
 
 import matplotlib
 import matplotlib.pyplot as plt
@@ -338,7 +337,7 @@ class Calibration:
 
 if __name__=="__main__":
     calib = Calibration()
-    calib.calibrate(1998, 2009, runs=1000000)
+    calib.calibrate(1998, 2009, runs=2)
     #plt.show()
 
 

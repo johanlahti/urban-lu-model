@@ -1,4 +1,4 @@
-# -*- coding: cp1252 -*-
+# -*- coding: utf-8 -*-
 from osgeo import gdal
 import numpy
 from glob import glob
@@ -162,7 +162,7 @@ def getFuzzyValue(arrPredict, arrReal, frameSize=(0,0), nSize=1, banList=[0]):
 
             fuzzyVal = 0.0
             distWeight = 0.0
-            shortestDist = 999
+            shortestDist = 999 # use infinity constant instead?
 
             # Search the neighborhood
             for r in range(-nSize, nSize+1):

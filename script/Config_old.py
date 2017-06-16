@@ -1,4 +1,4 @@
-# -*- coding: cp1252 -*-
+# -*- coding: utf-8 -*-
 import Utils, CUtils, LandUse, Constants
 import copy
 import json
@@ -99,7 +99,7 @@ def setParams(model):
             'arrayWeights' : []
             },
         5 : {
-            'name' : "Vägar",
+            'name' : "Vï¿½gar",
             'type' : "static",
             'color' : (0.1,0.1,0.1),
             'imagePaths' : [],
